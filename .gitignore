@@ -1,1 +1,4 @@
 *.backup
+*.pdf
+*.log
+devops.log

@@ -354,7 +354,7 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{The DevOps Way}
+\title{El Modelo DevOps (The DevOps Way)}
 
 
 % author names and affiliations
@@ -399,10 +399,10 @@ sergio.rodriguez@jalasoft.com}}
 \maketitle
 
 
-\begin{abstract}
+%\begin{abstract}
 %\boldmath
-Nowadays 
-\end{abstract}
+%Nowadays 
+%\end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
 % if the conference you are submitting to favors bold math in the abstract,
@@ -414,9 +414,20 @@ Nowadays
 
 \noindent
 \begin{minipage}{0.9\textwidth}
- \textsc{Resume}
+ \textsc{Resumen}
 \end{minipage}
-A text of example
+
+En un comienzo el programador escribía código y lo desplegaba por sí mismo, con el pasar del tiempo esto cambió. A finales de la década de los 70 con la llegada de los microcomputadores y la industrialización del software, los roles fueron diversificándose y la tendencia entre los profesionales fue la de especializarse en cierta área; en nuestro caso aquellos que producían el software (programadores, QA, etc.) y aquellos que lo mantenían en ambientes de producción (operaciones). Como era de esperarse la especialización introdujo barreras comunicacionales y operativas entre los distintos “gremios” de profesionales informáticos, de tal manera que existen incontables historias de tropiezos entre estos grupos. 
+
+A principios del siglo XXI más específicamente en Febrero del 2001, 17 notables desarrolladores de software se reunieron para discutir acerca de métodos ligeros de desarrollo, el resultado de éste encuentro fue la publicación del Manifiesto Ágil, una refrescante y aparentemente simple manera de desarrollar software; cuatro premisas dieron lugar al nacimiento de nuevos métodos que liberan del estrés de las herramientas de control burocrático al equipo y al mismo tiempo pone a las personas sobre los procesos. 
+
+Aunque varias de las metodologías nacidas a partir del manifiesto ágil lo han hecho bien en el campo de batalla, Scrum por ejemplo, podemos decir que aún presentan vacíos en el paso de la teoría a la aplicación en el mundo real. Las organizaciones nacidas en el mundo pre-Ágil, aún están muy arraigadas a su pasado especializado y burocrático, siendo que Ágil pide un tipo de profesional mucho más flexible y adaptable a los cambios de tecnologías y de roles; éstas organizaciones no son capaces de flexibilizar sus prácticas y buena parte de sus profesionales son reacios a generalizar sus conocimientos, por lo tanto caen en una hibridación que muchas veces es más dañina que beneficiosa. 
+
+Otras organizaciones han asimilado bien la práctica del desarrollo ágil pero sólo en sus equipos de desarrollo, mientras que la parte de la puesta en marcha (operaciones) continúa estática; su instinto conservador choca con la rapidez de los equipos de desarrollo ágiles y se crea un bloqueo entre la entrega de software y su despliegue en producción.
+
+Finalmente están las organizaciones que no tienen personal con experiencia en desarrollo ágil pero lo intentan de todas maneras, como resultado se genera un proceso pseudo-ágil que no tiene impacto real en la producción del equipo.
+
+Este documento intentará ilustrar al lector de manera breve acerca de cómo el movimiento DevOps ayuda al desarrollo ágil a cumplir con su propósito, primeramente realizando un fuerte cambio cultural en los equipos de desarrollo y operaciones, alentando a los miembros de sus equipos a diversificar sus conocimientos, contribuir a la mejora personal y del equipo a través de la experimentación y retroalimentación continúa; fortaleciendo también la comunicación entre individuos e incluyendo de manera real al cliente en el proceso de creación del producto. DevOps intenta liberar al profesional informático de tareas rutinarias que consumen tiempo innecesario a través de la automatización de procesos, ésto además contribuye a eliminar las fallas graves en ambientes sensibles debido al error humano, haciendo que cada paso del proceso de producción sea controlable, medible, reproducible y lo que es más importante, accesible para todos sin importar el nivel de conocimiento o destreza.
 
 
 
@@ -432,26 +443,233 @@ A text of example
 
 
 
-\section{Introduction}
+\section{Introducción}
 % no \IEEEPARstart
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.7 and later.
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-I wish you the best of success.
+En el modelo de desarrollo de software actual, sea ágil o tradicional, encontramos varios elementos en común; los equipos están separados en varios subequipos como ser: desarrolladores, testers, management y operaciones; en algunas ocasiones uno o más de éstos subequipos pueden no existir, el más común es el de operaciones. Cada subequipo suele tener sus propias reglas internas, preferencias, costumbres y obligaciones; la comunicación formal entre subequipos para cuestiones de trabajo normalmente se realiza a través de alguna herramienta de gestión de proyectos, manejo de tickets y correo electrónico. Un gran problema con éste enfoque es que crea pequeñas islas apartadas entre sí aún estando en el mismo lugar físico, la comunicación es lenta, suele haber silos donde el flujo de información se estanca, inconvenientes como el acceso autorizado a recursos, fallas catastróficas por errores humanos no planificados, apagar el incendio que otro equipo inició, releases con increíbles períodos de retraso, son algunas de las tantas situaciones que el modelo DevOps intenta corregir. 
 
-\hfill mds
- 
-\hfill January 11, 2007
+\section{La utopía del desarrollo ágil}
+Según la Wikipedia:
 
-\subsection{Subsection Heading Here}
-Subsection text here.
+“Desarrollo ágil es un conjunto de métodos de desarrollo de software en el que las necesidades y soluciones evolucionan a través de la colaboración y auto-organización de equipos multi-funcionales. Promueve la planificación adaptativa, desarrollo evolutivo, release temprano, mejora continua y promueve respuestas rápidas y flexibles a los cambios.”
 
+El concepto es excelente, pero en el mundo real surgen varios problemas, hagamos un ejercicio de autoevaluación convirtiendo el concepto en preguntas: ¿promovemos la mejora continua en nuestro equipo?, ¿planificamos para que nuestro desarrollo sea flexible, adaptable al cambio y evolucione? ¿aprendemos de nuestros errores? ¿sacamos releases tempranos? ¿qué hacemos para que nuestros equipos aprendan a colaborar entre sí, se auto-organicen y se vuelvan multifuncionales? ¿quién se ocupa de ello? 
 
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
+Seguramente cada quien tiene una respuesta de acuerdo a su realidad, pero la lógica nos dice que si han surgido corrientes (como DevOps) es que muchos se han dado cuenta de que son problemas reales, y bastante comunes. Definamos entonces de qué se trata DevOps.
 
+\section{¿Qué es DevOps?}
+DevOps nació debido a la necesidad de mejorar la agilidad de la parte de operaciones al momento de poner en marcha el producto final. Uno de los principales problemas del desarrollo ágil es el ya conocido muro que se crea entre el equipo de desarrollo y el equipo de operaciones quienes intercambian ítems pero nunca trabajan juntos.
+
+Ágil revolucionó el desarrollo de software tradicional pasando del modelo en cascada hacia un ciclo de desarrollo incremental continuo, pero lamentablemente no incluyó la parte operacional en el proceso, por lo tanto mientras el desarrollo se volvía continuo y dinámico, el despliegue quedó atorado en el modelo de cascada. Éste hecho se volvió un problema para los departamentos de negocios, quienes debían esperar meses para que se lleve a producción una funcionalidad que el equipo de desarrollo terminó mucho antes.
+
+El propósito de DevOps es en esencia extender las metas del desarrollo ágil incluyendo mecanismos de integración y entrega continua; también proveer de visibilidad sobre todo el proceso de release a los equipos involucrados en el desarrollo, desde la codificación hasta la puesta en marcha, evitando conflictos entre recursos y optimizando actividades. 
+
+Otro punto importante es tener un proceso de despliegue consistente a través de los ambientes de desarrollo, testeo y producción. DevOps incentiva a automatizar las tareas de configuración, testeo y release para cumplir con éste propósito.
+
+\section{¿Qué problemas intentamos resolver?}
+
+\subsection{Miedo al cambio}
+
+Una vez que la aplicación ha sido liberada, la gerencia del negocio y muchas veces el mismo departamento de IT se vuelven extremadamente susceptibles al cambio. Surge el temor de que la aplicación, y la misma plataforma sobre la que corre, sea demasiado frágil y vulnerable. Para paliar ésta situación sistemas de change-management terriblemente burocráticos se ponen en marcha, limitando accesos, protegiendo el sistema (que a duras penas llegó a funcionar) con grilletes. Como consecuencia se necesitará un tiempo penosamente largo para conseguir introducir nuevas funcionalidades, o arreglar problemas de la aplicación.
+
+Desde la perspectiva individual, el temor de las personas a salir de su zona de confort es bastante común, por ejemplo: evitar cambiar de sistema operativo, probar nuevas herramientas, o falta de voluntad para aprender y hacer funcionar las cosas, probar nuevos procesos, etc., limitan grandemente el flujo de trabajo.
+
+\subsection{Despliegues riesgosos}
+
+Otro síntoma del problema es la existencia del concepto del “release arriesgado” en el equipo. Esta es la situación en la que nadie está realmente seguro de que el software funcionará en producción. Preguntas como: ¿el código se comportará como se espera? ¿podrá soportar la carga? son frecuentes el día del release; a menudo no se tienen respuestas a estas preguntas, simplemente el release se ejecuta y todos se sientan a ver si se cae.
+
+\subsection{¡Funciona en mi máquina!}
+
+Una situación muy común que experimentamos en releases es aquella en la que uno o varios problemas se manifiestan una vez que la aplicación está ya en producción. Estos problemas suelen ser recolectados por los administradores de sistemas, servicios de helpdesk y/o personal de soporte al cliente. Después de realizada la investigación junto al cliente (aunque para ser más sinceros, frecuentemente sin haberlo hecho) el problema se reporta al departamento de desarrollo. Los programadores le dan un vistazo superficial, y replican: “Funciona en mi máquina...”.
+
+Sin embargo, ésta respuesta muy a menudo es un sin sentido. No es para nada fuera de lo común encontrar aquellos lugares donde se programa en estaciones de trabajo Windows 7,  el código es probado en Tomcat sobre Windows, y luego se despliega en Redhat Linux, con software de balanceo de carga, diferentes versiones de Java y diferentes versiones de Tomcat. Esto sin mencionar que los archivos de configuración son completamente diferentes en las máquinas de desarrollo en comparación a las máquinas de producción. Con tantas variables diferentes, es lógico que la aplicación funcione en unos ambientes y en otros no.
+
+\subsection{Separación por Silos}
+
+Como ya habíamos mencionado párrafos atrás, en la mayoría de los proyectos tradicionales el equipo se divide en desarrolladores, testers, managers y operaciones, la mayoría especializados en su área y todos trabajando en silos o islas separadas. Desde una perspectiva de proceso colectivo-evolutivo, esto es una terrible pérdida de tiempo. También puede conducir a una filosofía de “pasarlo por encima del muro”, los problemas se acarrean de silo en silo entre analistas de negocio, desarrolladores, control de calidad y administradores de sistemas. 
+
+A menudo, los silos más grandes no están en la misma oficina, o la misma ciudad, o en ocasiones ni siquiera en el mismo país. El resultado es una  mentalidad de “nosotros y ellos”, grupos de personas que sospechan y tienen miedo unas de otras, en casos extremos puede llevar a pequeñas guerras por correo entre bandos de acusadores y defensores.
+
+\section{Los Tres Principios (The Three Ways)}
+
+Los tres principios son el equivalente a las principios del Manifiesto Ágil para DevOps, son la base de donde derivan todos sus patrones, éstos describen los valores y la filosofía que enmarca los procesos, procedimientos, prácticas y pasos establecidos.
+
+\subsection{Primer Principio: Pensamiento Sistémico}
+
+Enfatiza el desempeño del sistema completo, es lo opuesto al desempeño de un departamento o silo específico; éste puede ser tan grande como una división (p.e. desarrollo u operaciones) o tan pequeño como un individuo (p.e. un desarrollador un administrador de sistemas).
+
+Se centra en todos los flujos de valor generados para el negocio por los departamentos de tecnologías de información (IT); en otras palabras, comienza cuando se identifican los requerimientos por el departamento de negocios o por IT, luego son abstraídos y materializados en software por desarrollo, y finalmente se transfiere a operaciones donde el valor se entrega al cliente en forma de servicio(s).
+
+El resultado de poner en práctica el primer principio es que nunca se pasará un defecto conocido hacia el siguiente nivel de la línea de producción, nunca se permitirá la realización de optimizaciones locales que creen una degradación global, siempre se buscará el aumento de velocidad en el flujo de trabajo, y siempre se buscará lograr una profunda comprensión del sistema.
+
+\subsection{Segundo Principio: Amplificar los Ciclos de Retroalimentación}
+
+El Segundo Principio trata acerca de crear ciclos de retroalimentación que van de derecha a izquierda en la línea de producción. Cualquier iniciativa de mejora de procesos debe tener como meta acortar y ampliar los circuitos de retroalimentación de tal manera que las correcciones necesarias puedan realizarse de manera contínua.
+
+Los resultados de aplicar el Segundo Principio serán comprender y responder a todos los clientes, internos y externos, acortando y amplificando los ciclos de retroalimentación (menos tiempo, más calidad en la información), finalmente incorporando conocimiento donde se necesite.
+
+\subsection{Tercer Principio: Cultura de Experimentación y Aprendizaje Contínuo}
+
+El Tercer Principio trata de crear una cultura que fomente tres cosas: la experimentación continua, correr riesgos sin temor y aprender de los fracasos, de ésta manera les será fácil a los miembros del equipo comprender que la repetición y la práctica son prerrequisitos para dominar el conocimiento.
+
+Repetición y práctica son necesarias, ambas en igual proporción; aún más si van de la mano con experimentación y toma de riesgos; ésto nos garantiza la mejora contínua, incluso si ésto significa ingresar en zonas peligrosas que desconocemos. Necesitamos pulir las habilidades que puedan ayudarnos a escapar de esas zonas de peligro cuando hayamos traspasado la zona segura.
+
+Los resultados de aplicar el Tercer Principio implican poder reservar tiempo suficiente para la mejora del trabajo diario creando rituales que recompensen al equipo por tomar riesgos, además haciendo común la práctica de introducir fallos a propósito en el sistema para aumentar la resiliencia.
+
+\section{Aplicando los Tres Principios de manera práctica}
+
+Los principios vistos anteriormente nacieron como resultado de combinar varias metodologías tanto de negocio como de la industria (p.e. Lean y Kanban), cada una de éstas metodologías fija un flujo de trabajo constante a través de una cadena de producción donde todo el personal contribuye en paralelo. Para implementar DevOps en un equipo u organización se procede de la misma manera. 
+
+Primeramente es necesario implantar una semilla, significa que una o más personas con experiencia en éstas técnicas serán introducidas en el ecosistema; estas personas deben contar con la experiencia suficiente para analizar al equipo, identificar silos y bloqueos, trabajar en conjunto con management y el cliente para crear una atmósfera favorable al cambio; el equipo u organización a su vez debe aceptar el cambio en los procesos, habituarse a las nuevas prácticas y ser disciplinado al momento de participar. A continuación mencionaremos las prácticas más relevantes.
+
+\subsection{Eliminar diferencias entre ambientes}
+
+Puede parecer poco importante pero es fundamental, un ambiente de desarrollo y testeo heterogéneo asegura detectar errores temprano en el ciclo de desarrollo, programar y testear en un ambiente similar al de producción evita la conocida frase “funciona en mi máquina”. Se deben estandarizar los archivos de configuración, los servicios se configurarán de manera que las mismas limitaciones sean las mismas que en ambientes de producción, por lo tanto se desarrollará de acuerdo a ello; los miembros del equipo reforzarán sus conocimientos de manejo y troubleshooting en el sistema operativo, llegado el momento cualquiera debería ser capaz de lidiar con problemas en los ambientes de producción.
+
+\subsection{Hacer que los miembros del equipo sean auto-suficientes}
+
+Significa dar poder a los miembros del equipo sobre los recursos tanto a nivel de desarrollo como de producción, por ejemplo, poder acceder a los datos de las bases de datos en cualquier momento, correr comandos en los ambientes de producción sin temor a estropear nada, tener la capacidad de hacer un deploy no importando el nivel de conocimiento o el rol que ocupa determinado miembro.
+
+¿De qué manera logramos todo ésto? Con automatización. Creando una capa intermedia entre los recursos y el usuario que puede ser un miembro del equipo o alguien externo con permisos. La capa intermedia puede estar compuesta de una o varias APIs programadas para traducir peticiones del usuario hacia los recursos de la cadena de producción a través de una interfaz amigable, limitando además el alcance de las operaciones realizadas por los usuarios en los ambientes o recursos para no dañar partes sensibles y finalmente generar estadísticas de uso y retroalimentar el conocimiento de las prácticas del equipo para mejorarlas
+
+\subsection{Dar visibilidad directa al equipo sobre el monitoreo}
+
+Consiste en crear las herramientas necesarias para dar al equipo la posibilidad de supervisar directamente los ambientes de producción, staging o de pruebas. La meta es mostrar al equipo cómo se comporta la aplicación que construyen en el mundo real, por ejemplo hasta que un desarrollador no vea con sus propios ojos cómo se comporta el código interactuando con una base de datos real con usuarios, otro ejemplo visto sólo en una base de datos en producción es el bloqueo de tuplas, la ejecución de consultas de bloqueo, y la contención de recursos no se activan hasta que una consulta proveniente de la aplicación lidie con tráfico en vivo.
+
+\subsection{Hacer del performance un requerimiento funcional}
+
+Hasta hace poco, el rendimiento (performance) era un requerimiento no-funcional en los backlogs de los proyectos, y reposaba ahí junto con varias de las “-bilidades” por ejemplo fiabilidad y disponibilidad. Lamentablemente siempre se dejan para el final o para ser sinceros, para nunca. Ésto debe cambiar; incorporando herramientas que midan el rendimiento de la aplicación en la misma aplicación ayuda a una detección temprana de males que son difíciles de detectar porque emergen luego de pasado un tiempo y/o cuando ciertas circunstancias se han llevado a cabo (p.e.: goteos de memoria). 
+
+En esta parte podemos utilizar nuestras herramientas de testeo. El testeo automático nos ayudan a ejercer presión sobre el sistema, no solamente probando atómicamente los métodos del código o las funcionalidades,  también podemos simular tráfico real, diferentes condiciones sobre backing services como bases de datos, APIs, etc. Además se pueden obtener estadísticas de la evolución de la aplicación en el tiempo, dicha información es útil además para revertir envíos fallidos ocurridos en el proceso de despliegue, si las estadísticas salen muy mal luego de la integración de un código, la cadena de despliegue puede inteligentemente hacer una reversión al estado anterior y mandar las notificaciones correspondientes, y/o bloquear el envío de código nuevo hasta que la funcionalidad haya sido arreglada; ésta es una práctica muy usada en el patrón de despliegue continuo.
+
+\subsection{Establecer una base común para generación de métricas y otorgar igualdad de acceso a los reportes}
+
+Cada parte del equipo ya sea desarrollo, negocios o management debe usar la misma base de métricas para comparar resultados, evaluar el progreso y hacer seguimiento del impacto en los cambios en cualquier fase de la cadena de producción.
+
+Para que los indicadores sean entendidos por todos, tienen que ser simples en concepto y presentación. Cuando los ingenieros tanto los desarrollan el software como los que despliegan el sistema tienen métricas comunes para evaluar su progreso, están mejor encausados para trabajar por el mismo objetivo.
+
+\subsection{Enfocarse en la experiencia del usuario final}
+
+En un proyecto de desarrollo de software se crea uno o más productos para diferentes usuarios, ellos serán los que paguen por el producto y lo utilicen, por lo tanto cada miembro del equipo debe ponerse en ese lugar y expresar su posición al respecto, de tal manera que todos estén en el mismo camino, tener la misma visión es importante, más aún cuando el cliente no tiene una idea clara de lo que quiere pero es al final el único que hace una evaluación real del desempeño del equipo aceptando o rechazando el producto.
+
+Debemos tomar en cuenta que internamente también existen usuarios finales; en el transcurso del desarrollo es inevitable crear herramientas internas, el modelo DevOps alienta a construir éstas herramientas con mucho detalle y cuidado, tal y como si fueran producto destinados a clientes, para que todos los miembros del equipo, incluso aquellos que no pertenecen al ramo de ingeniería, como ser marketing o inversores, puedan usarlas. En muchos casos éstas herramientas internas se han convertido en productos exitosos, compañías como Netflix, Google, Facebook, Thoughtworks, etc., constantemente liberan sus herramientas al público y varias de ellas tienen usuarios de pago, ésto convierte al equipo en un potencial productor de ideas rentables.
+
+\section{Procesos, Prácticas y Patrones de Despliegue}
+
+A continuación mencionaremos algunos de los procesos, prácticas y patrones más importantes que el modelo DevOps aplica. Estos procesos son a escala global, pero cabe considerar que contribuyen a los la implementación de los principios mencionado anteriormente.
+
+\subsection{Integración Continua (Continuous Integration)}
+
+Originalmente planteada por Grady Booch y adoptada posteriormente por eXtreme Programming, la idea es integrar el código del repositorio cada vez que se realiza  un nuevo envío por parte de los desarrolladores; pero no está limitado sólo a integrar o construir el ejecutable, actualmente también realizar un sin fin de tareas adicionales como correr tests automáticos.
+
+Hoy en día las herramientas de integración continua son el corazón del proceso de despliegue automatizado, por lo tanto son un requisito indispensable para aplicar los patrones de entrega continua o despliegue continuo; permite además orquestar todo el flujo de despliegue de manera paralela, optimizando tiempo y esfuerzo.
+
+\subsection{Entrega Continua (Continuous Delivery)}
+
+Entrega contínua es un patrón de despliegue que lleva la integración continua al siguiente nivel. Combina en un sólo proceso la construcción de ejecutables, integración de módulos, ejecuta los tests de unidad, funcionales y de aceptación y finalmente despliega el código en ambientes de testeo, staging y alguna veces en producción. El sistema de despliegue normalmente es ejecutado en un cluster que activa o desactiva funcionalidades de acuerdo  a los resultados obtenidos en cada fase de la línea de producción; permite además integrar la línea de producción con herramientas variadas como repositorios de código, repositorios de binarios, APIs, cloud, etc., de tal manera que es posible monitorear todo el proceso de principio a fin, y sistemas de notificaciones alertan al equipo acerca de errores, posibles inconvenientes y además muestra el desempeño del software a lo largo de cada ciclo de despliegue.
+
+Entrega continua permite decidir al equipo de negocios cuándo realizar los releases, y cambiar las condiciones por cada cliente. Es aconsejable para productos grandes con muchos módulos y un ciclo de releases de corto a mediano plazo.
+
+\subsection{Despliegue Continuo (Continuous Deployment)}
+
+Parte importante de la metodología de negocios Lean. Despliegue Continuo es otro patrón de despliegue que ha tomado fuerza últimamente con el auge de las empresas estilo StartUp; es similar al proceso de Entrega Continua pero con diferencias sustanciales:
+
+\begin{itemize}
+ \item Todo el proceso debe ser automatizado, no existen tareas manuales.
+ \item Cada envío de código al repositorio es deployado directamente a producción.
+ \item El código enviado pasa por un estricto control en la línea de producción llamado “Cluster Immune System” (Sistema de Clúster Inmune)
+ \item El Sistema de Clúster Inmune ejecuta varias pruebas en el código, aparte de los tests automáticos, si alguna de las pruebas falla, toda la cadena de producción se detiene, el sistema de versionamiento de código se bloquea para evitar nuevos envíos, y todo el personal debe trabajar en arreglar el fallo.
+ \item Una vez ocurrido y subsanado un error se documenta y se crean nuevos tests, para ello se hace un análisis siguiendo una técnica de análisis llamada “The Five Ways” (Los cinco porqués).
+ \item Todo el proceso de despliegue es guiado por un único script que va evolucionando de acuerdo a los requerimientos.
+ \item El Sistema de Clúster Inmune está monitoreado a cada paso por uno o más sistemas externos que miden el performance del ambiente, transacciones de bases de datos, velocidad de transmisión de datos, etc., cuando un valor está fuera de lo esperado se envían alertas al equipo para que el análisis de las causas comience. Es denominado como Real-Time Alerting.
+ \item Ya que nuevas funcionalidades son enviadas directamente a producción, los usuarios reciben directamente las actualizaciones, ésto puede causar flujos de tráfico inestable, para ello Despliegue Continuo utiliza una técnica llamada “Just-In-Time Scalability” (Escalar Justo-A-Tiempo), la cual consiste en poner servicios como balanceadores de carga, puertas de enlace y proxies monitoreados en frente de la aplicación, los cuales automáticamente disparan scripts que configuran y provisionan nuevos ambientes hasta satisfacer la demanda o caso contrario reducen el número de ambientes en desuso para reducir costos.
+\end{itemize}
+
+Despliegue continuo es aconsejable para proyectos muy dinámicos, con despliegue inmediato.
+
+\subsection{La Metodología de los Doce Factores (The Twelve-Factor App)}
+
+Es un framework de técnicas que profesionales con marcada experiencia en el desarrollo y despliegue de aplicaciones tipo PaaS han recolectado y publicado para ayudar a la comunidad a desarrollar aplicaciones portables, flexibles y robustas. Citando el texto de su página:
+
+\begin{quote}
+ “En la era moderna el software es desplegado como servicio: llámese aplicación Web o Software-as-a-Service” (Software-como-servicio). Los doce-factores es una metodología para construir aplicaciones de software-como-servicio que:
+\end{quote}
+
+\begin{itemize}
+ \item Usan formatos declarativos para configurar la automatización y minimizar el tiempo y costo de aprendizaje para los nuevos desarrolladores que ingresan al proyecto.
+ \item Tienen un contrato claro con el sistema operativo sobre el que corren, ofreciendo portabilidad máxima entre ambientes de ejecución.
+ \item Son aptas para ser desplegadas en todas las plataformas modernas de la nube, obviando la necesidad de servidores y administración de sistemas.
+ \item Minimizan la divergencia entre ambientes de desarrollo y producción; usando despliegue continuo para obtener máxima agilidad.
+ \item Y finalmente pueden escalar sin cambios significativos de herramientas, arquitectura o prácticas de desarrollo.
+\end{itemize}
+
+La metodología de los doce-factores puede ser utilizada en aplicaciones escritas usando cualquier lenguaje, las cuales además pueden requerir cualquier combinación de servicios externos (bases de datos, colas, cache de memoria, etc.)”
+
+Los doce factores son los siguientes:
+
+\begin{enumerate}
+ \item {\bf Un único código base} - Una sola base de código hospedado en un servicio de control de versiones, todos los despliegues se realizan utilizando ésta base de código unica.
+ \item {\bf Dependencias} - Declarar y aislar las dependencias explícitamente.
+ \item {\bf Configuración} - Guardar las configuraciones en el ambiente.
+ \item {\bf Servicios Externos} - Tratas a los servicios externos como si fueran recursos anexos.
+ \item {\bf Construir, deployar, ejecutar} - Separar estrictamente las etapas de compilar/construir de la de ejecutar.
+ \item {\bf Procesos} - Ejecutar la aplicación como uno o más procesos independientes.
+ \item {\bf Vincular puertos} - Exportar los servicios vía enlace de puertos.
+ \item {\bf Concurrencia} - Escalar vía un modelo de proceso.
+ \item {\bf Desechabilidad} - Maximizar la robustez con inicios rápidos y apagados elegantes.
+ \item {\bf Paridad en Dev/prod} - Mantener ambientes de desarrollo, staging y producción lo más similar posible.
+ \item {\bf Logs} - Tratar a los logs como flujos de eventos.
+ \item {\bf Procesos administrativos} - Ejecutar tareas de administración / gestión como procesos puntuales.
+\end{enumerate}
+
+Adicionalmente es deseable para el equipo conocer y aplicar las metodologías base, a continuación una breve definición de ellas.
+
+\subsection{Lean StartUp}
+
+Es un método para hacer negocios y crear productos diseñado por Eric Ries quien a su vez es el inventor del despliegue continuo (continuous deployement). Busca eliminar la prácticas inútiles e incrementar el valor creando nuevas prácticas durante el desarrollo del producto de tal manera que los negocios puedan tener mejores oportunidades de éxito sin requerir grandes montos de dinero externo, elaborados planes de negocio complejos, o el producto perfecto. Da especial importancia a la retroalimentación del cliente durante y luego del desarrollo del producto asegurando que el productor no invierta tiempo diseñando funcionalidades o servicios que los clientes no quieren.
+
+Principios:
+
+\begin{itemize}
+ \item {\bf El mínimo producto viable (MVP)} - Es la versión mínima de un nuevo producto que permite al equipo recolectar la máxima cantidad de datos válidos acerca de los clientes con el esfuerzo mínimo. 
+ \item {\bf Despliegue continuo} - Es un proceso donde todo el código escrito para la aplicación es inmediatamente desplegado en producción lo cuál reduce el tiempo de las iteraciones de trabajo.
+ \item {\bf Pruebas separadas (Pruebas A/B)} -  Es un experimento en el cuál diferentes versiones de un producto son ofrecidas a los clientes al mismo tiempo. El objetivo es observar los comportamientos entre los dos grupos y medir el impacto de cada versión en una métrica procesable.
+ \item {\bf Métricas procesables} - Útiles para toma de decisiones del negocio y acciones subsecuentes.
+ \item {\bf Pivote} - Es una manera de corregir el curso estructurado diseñado para poner a prueba una nueva hipótesis fundamental sobre el producto, y la estrategia.
+ \item {\bf Contabilidad de la Innovación} - Este tema se centra en cómo los empresarios pueden mantener la responsabilidad y maximizar los resultados de la medición del progreso, la planificación de hitos, y priorizar.
+ \item {\bf Construir-Medir-Aprender} - Es la parte más importante de la metodología que explica que deberíamos hacer entre las fases de idear (Construir), codificar (medir) y documentar (aprender). En otras palabras es un proceso iterativo de convertir ideas en productos, y saber si proseguir o cambiar la idea, éste proceso se repite una y otra vez.
+\end{itemize}
+
+\subsection{Kanban}
+
+Inspirada por el sistema de producción de Toyota, Kanban es una metodología para gestionar el trabajo del conocimiento haciendo énfasis en la entrega justo a tiempo al mismo tiempo evitando sobrecargar al equipo. Fue creado como un enfoque incremental, de proceso evolutivo y un sistema de cambio para organizaciones.  Se cimienta en cuatro principios básicos:
+
+\begin{itemize}
+ \item {\bf Empezar con los procesos existentes} - La metodología Kanban no prescribe un conjunto específico de roles o pasos de un proceso. Empieza con los roles y procesos existentes  y estimula cambios continuos, incrementales y evolutivos en el sistema. La metodología Kanban es un método de gestión del cambio.
+ \item {\bf Aceptar la búsqueda incremental y evolutiva del cambio} - La organización (o equipo) debe aceptar que el cambio continuo, incremental y evolutivo es el camino para realizar mejoras en el sistema y hacerlo resistente. Los cambios radicales pueden parecer más eficaces, pero tienen una mayor tasa de fracaso debido a la resistencia y el miedo en la organización. El método Kanban anima a los cambios pequeños continuos, incrementales y evolutivos a su sistema actual.
+ \item {\bf Respetar el proceso actual, los roles responsabilidades y títulos} - Es probable que la organización actualmente tenga algunos elementos que funcionan aceptablemente y sean dignos de ser preservados. El método Kanban busca expulsar el miedo con el fin de facilitar el cambio futuro. Se trata de eliminar los temores iniciales, acordando respetar los roles, responsabilidades y títulos existentes con el objetivo de obtener un apoyo más amplio.
+ \item {\bf Liderar a todos los niveles} - Se alienta a realizar actos de liderazgo en todos los niveles de la organización, desde los contribuyentes individuales hasta la alta dirección.
+\end{itemize}
+
+\section{¿Qué NO es DevOps?}
+
+Existe mucha confusión en el medio acerca de lo que es DevOps, muchos piensan que es una profesión, otros que es otro nombre para un administrador de sistemas. Veamos un pequeño checklist de lo que no es DevOps
+
+\begin{itemize}
+ \item No es un rol específico, ni un tipo de profesional.
+ \item DevOps no influye en tener menos estantería o hardware apilado.
+ \item Tener desarrolladores con permisos de root.
+ \item Usar herramientas de gestión de la configuración (como puppet o chef)
+ \item Aplicar despliegue continuo o entrega continua, porque sí.
+ \item Deshacerse del equipo de operaciones.
+\end{itemize}
+
+A manera de anécdota, incluimos unas cuantas frases tomadas del blog de Martin Spall acerca de cómo fallar al discernir cuándo o cómo se aplica DevOps.
+
+“He renombrado a nuestro equipo de IT Ops como DevOps”.. Aunque los skills de un IT Ops son requeridos, son solo una parte del perfil.
+
+“Pero.. nuestro equipo de DevOps implementa pupper/chef/CFEngine para provisionar sus sistemas.”. Ésto tampoco es DevOps, es simplemente IT operations usando herramientas.
+
+“Hemos separado nuestros equipo de IT Ops en Infraestructura y DevOps. Nuestro equipo de infraestructura maneja los racks y el stack, nuestro equipo de DevOps usan pupper/chef...” ¡Felicitaciones! Se ha dado cuenta que algunas personas en operaciones no quieren realizar tareas de desarrollo, pero lo único que es separar a los dos equipos que al parecer siguen siendo operaciones.
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
@@ -538,23 +756,20 @@ Subsubsection text here.
 
 
 \section{Conclusion}
-The conclusion goes here.
+Hemos intentado describir de manera rápida las razones del porqué nace el movimiento DevOps, el cómo ayuda al negocio a convertirse en algo más resistente y recibir más beneficios en menos tiempo. También mencionamos las prácticas, patrones y procesos asociados a la aplicación del modelo, y cómo un equipo debería comportarse una vez que la decisión de realizar el cambio haya sido tomada. Finalmente mencionamos cómo no hacer DevOps.
 
+Indudablemente la práctica de este modelo requiere mucho esfuerzo y disciplina de cada parte del equipo, el cambio cultural es un choque para las personas habituadas a modelos más tradicionales de desarrollo. 
 
-
+Esperamos haber inspirado en el lector la curiosidad de averiguar más acerca de éste relativamente nuevo pero poderoso movimiento, recordándole que tomar riesgos es sano, lo valorable al final es la experiencia obtenida que es el combustible que lleva a los negocios a triunfar definitivamente.
 
 % conference papers do not normally have an appendix
 
 
 % use section* for acknowledgement
-\section*{Acknowledgment}
+% \section*{Acknowledgment}
 
 
-The authors would like to thank...
-
-
-
-
+% The authors would like to thank...
 
 % trigger a \newpage just before the given reference
 % number - used to balance the columns on the last page

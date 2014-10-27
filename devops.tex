@@ -1,4 +1,3 @@
-
 %% bare_conf.tex
 %% V1.3
 %% 2007/01/11
@@ -345,6 +344,8 @@
 
 % Unicode support.
 \usepackage[utf8]{inputenc}
+% HTTP references.
+\usepackage{hyperref}
 
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
@@ -417,7 +418,7 @@ sergio.rodriguez@jalasoft.com}}
  \textsc{Resumen}
 \end{minipage}
 
-En un comienzo el programador escribía código y lo desplegaba por sí mismo, con el pasar del tiempo esto cambió. A finales de la década de los 70 con la llegada de los microcomputadores y la industrialización del software, los roles fueron diversificándose y la tendencia entre los profesionales fue la de especializarse en cierta área; en nuestro caso aquellos que producían el software (programadores, QA, etc.) y aquellos que lo mantenían en ambientes de producción (operaciones). Como era de esperarse la especialización introdujo barreras comunicacionales y operativas entre los distintos “gremios” de profesionales informáticos, de tal manera que existen incontables historias de tropiezos entre estos grupos. 
+En un comienzo el programador escribía código y lo desplegaba por sí mismo, con el pasar del tiempo esto cambió. A finales de la década de los 70 con la llegada de los microcomputadores y la industrialización del software, los roles fueron diversificándose y la tendencia entre los profesionales fue la de especializarse en cierta área; en nuestro caso aquellos que producían el software (programadores, QA, etc.) y aquellos que lo mantenían en ambientes de producción (operaciones) [1]. Como era de esperarse la especialización introdujo barreras comunicacionales y operativas entre los distintos “gremios” de profesionales informáticos, de tal manera que existen incontables historias de tropiezos entre estos grupos. 
 
 A principios del siglo XXI más específicamente en Febrero del 2001, 17 notables desarrolladores de software se reunieron para discutir acerca de métodos ligeros de desarrollo, el resultado de éste encuentro fue la publicación del Manifiesto Ágil, una refrescante y aparentemente simple manera de desarrollar software; cuatro premisas dieron lugar al nacimiento de nuevos métodos que liberan del estrés de las herramientas de control burocrático al equipo y al mismo tiempo pone a las personas sobre los procesos. 
 
@@ -430,6 +431,9 @@ Finalmente están las organizaciones que no tienen personal con experiencia en d
 Este documento intentará ilustrar al lector de manera breve acerca de cómo el movimiento DevOps ayuda al desarrollo ágil a cumplir con su propósito, primeramente realizando un fuerte cambio cultural en los equipos de desarrollo y operaciones, alentando a los miembros de sus equipos a diversificar sus conocimientos, contribuir a la mejora personal y del equipo a través de la experimentación y retroalimentación continúa; fortaleciendo también la comunicación entre individuos e incluyendo de manera real al cliente en el proceso de creación del producto. DevOps intenta liberar al profesional informático de tareas rutinarias que consumen tiempo innecesario a través de la automatización de procesos, ésto además contribuye a eliminar las fallas graves en ambientes sensibles debido al error humano, haciendo que cada paso del proceso de producción sea controlable, medible, reproducible y lo que es más importante, accesible para todos sin importar el nivel de conocimiento o destreza.
 
 
+\begin{keywords}
+  Agile Development, Business, DevOps, Infraestructure, IT, QA, SysAdmin, Software Development.
+\end{keywords}
 
 % For peer review papers, you can put extra information on the cover
 % page as needed:
@@ -448,7 +452,7 @@ Este documento intentará ilustrar al lector de manera breve acerca de cómo el 
 En el modelo de desarrollo de software actual, sea ágil o tradicional, encontramos varios elementos en común; los equipos están separados en varios subequipos como ser: desarrolladores, testers, management y operaciones; en algunas ocasiones uno o más de éstos subequipos pueden no existir, el más común es el de operaciones. Cada subequipo suele tener sus propias reglas internas, preferencias, costumbres y obligaciones; la comunicación formal entre subequipos para cuestiones de trabajo normalmente se realiza a través de alguna herramienta de gestión de proyectos, manejo de tickets y correo electrónico. Un gran problema con éste enfoque es que crea pequeñas islas apartadas entre sí aún estando en el mismo lugar físico, la comunicación es lenta, suele haber silos donde el flujo de información se estanca, inconvenientes como el acceso autorizado a recursos, fallas catastróficas por errores humanos no planificados, apagar el incendio que otro equipo inició, releases con increíbles períodos de retraso, son algunas de las tantas situaciones que el modelo DevOps intenta corregir. 
 
 \section{La utopía del desarrollo ágil}
-Según la Wikipedia:
+Según Wikipedia [2]:
 
 “Desarrollo ágil es un conjunto de métodos de desarrollo de software en el que las necesidades y soluciones evolucionan a través de la colaboración y auto-organización de equipos multi-funcionales. Promueve la planificación adaptativa, desarrollo evolutivo, release temprano, mejora continua y promueve respuestas rápidas y flexibles a los cambios.”
 
@@ -457,7 +461,7 @@ El concepto es excelente, pero en el mundo real surgen varios problemas, hagamos
 Seguramente cada quien tiene una respuesta de acuerdo a su realidad, pero la lógica nos dice que si han surgido corrientes (como DevOps) es que muchos se han dado cuenta de que son problemas reales, y bastante comunes. Definamos entonces de qué se trata DevOps.
 
 \section{¿Qué es DevOps?}
-DevOps nació debido a la necesidad de mejorar la agilidad de la parte de operaciones al momento de poner en marcha el producto final. Uno de los principales problemas del desarrollo ágil es el ya conocido muro que se crea entre el equipo de desarrollo y el equipo de operaciones quienes intercambian ítems pero nunca trabajan juntos.
+DevOps nació debido a la necesidad de mejorar la agilidad de la parte de operaciones al momento de poner en marcha el producto final. Uno de los principales problemas del desarrollo ágil es el ya conocido muro que se crea entre el equipo de desarrollo y el equipo de operaciones quienes intercambian ítems pero nunca trabajan juntos [3].
 
 Ágil revolucionó el desarrollo de software tradicional pasando del modelo en cascada hacia un ciclo de desarrollo incremental continuo, pero lamentablemente no incluyó la parte operacional en el proceso, por lo tanto mientras el desarrollo se volvía continuo y dinámico, el despliegue quedó atorado en el modelo de cascada. Éste hecho se volvió un problema para los departamentos de negocios, quienes debían esperar meses para que se lleve a producción una funcionalidad que el equipo de desarrollo terminó mucho antes.
 
@@ -466,6 +470,7 @@ El propósito de DevOps es en esencia extender las metas del desarrollo ágil in
 Otro punto importante es tener un proceso de despliegue consistente a través de los ambientes de desarrollo, testeo y producción. DevOps incentiva a automatizar las tareas de configuración, testeo y release para cumplir con éste propósito.
 
 \section{¿Qué problemas intentamos resolver?}
+Tomando como base la publicación de Stephen Nelson-Smith [4], y complementando brevemente.
 
 \subsection{Miedo al cambio}
 
@@ -490,6 +495,8 @@ Como ya habíamos mencionado párrafos atrás, en la mayoría de los proyectos t
 A menudo, los silos más grandes no están en la misma oficina, o la misma ciudad, o en ocasiones ni siquiera en el mismo país. El resultado es una  mentalidad de “nosotros y ellos”, grupos de personas que sospechan y tienen miedo unas de otras, en casos extremos puede llevar a pequeñas guerras por correo entre bandos de acusadores y defensores.
 
 \section{Los Tres Principios (The Three Ways)}
+
+En el libro “The Phoenix Project: A Novel About  IT, DevOps, and Helping Your Business Win” [5] los autores nos narran la historia de una empresa cualquiera y su departamento de IT, y cómo ésta evoluciona de estar en camino a la bancarrota a convertirse en un éxito tecnológico y financiero, todo ésto aprendiendo qué son los tres principios y aplicandolos.
 
 Los tres principios son el equivalente a las principios del Manifiesto Ágil para DevOps, son la base de donde derivan todos sus patrones, éstos describen los valores y la filosofía que enmarca los procesos, procedimientos, prácticas y pasos establecidos.
 
@@ -559,19 +566,19 @@ A continuación mencionaremos algunos de los procesos, prácticas y patrones má
 
 \subsection{Integración Continua (Continuous Integration)}
 
-Originalmente planteada por Grady Booch y adoptada posteriormente por eXtreme Programming, la idea es integrar el código del repositorio cada vez que se realiza  un nuevo envío por parte de los desarrolladores; pero no está limitado sólo a integrar o construir el ejecutable, actualmente también realizar un sin fin de tareas adicionales como correr tests automáticos.
+Originalmente planteada por Grady Booch [6] y adoptada posteriormente por eXtreme Programming, la idea es integrar el código del repositorio cada vez que se realiza  un nuevo envío por parte de los desarrolladores; pero no está limitado sólo a integrar o construir el ejecutable, actualmente también realizar un sin fin de tareas adicionales como correr tests automáticos.
 
 Hoy en día las herramientas de integración continua son el corazón del proceso de despliegue automatizado, por lo tanto son un requisito indispensable para aplicar los patrones de entrega continua o despliegue continuo; permite además orquestar todo el flujo de despliegue de manera paralela, optimizando tiempo y esfuerzo.
 
 \subsection{Entrega Continua (Continuous Delivery)}
 
-Entrega contínua es un patrón de despliegue que lleva la integración continua al siguiente nivel. Combina en un sólo proceso la construcción de ejecutables, integración de módulos, ejecuta los tests de unidad, funcionales y de aceptación y finalmente despliega el código en ambientes de testeo, staging y alguna veces en producción. El sistema de despliegue normalmente es ejecutado en un cluster que activa o desactiva funcionalidades de acuerdo  a los resultados obtenidos en cada fase de la línea de producción; permite además integrar la línea de producción con herramientas variadas como repositorios de código, repositorios de binarios, APIs, cloud, etc., de tal manera que es posible monitorear todo el proceso de principio a fin, y sistemas de notificaciones alertan al equipo acerca de errores, posibles inconvenientes y además muestra el desempeño del software a lo largo de cada ciclo de despliegue.
+Un concepto también elaborado como parte de eXtreme Programming en su momento [7]. Entrega contínua es un patrón de despliegue que lleva la integración continua al siguiente nivel. Combina en un sólo proceso la construcción de ejecutables, integración de módulos, ejecuta los tests de unidad, funcionales y de aceptación y finalmente despliega el código en ambientes de testeo, staging y alguna veces en producción. El sistema de despliegue normalmente es ejecutado en un cluster que activa o desactiva funcionalidades de acuerdo  a los resultados obtenidos en cada fase de la línea de producción; permite además integrar la línea de producción con herramientas variadas como repositorios de código, repositorios de binarios, APIs, cloud, etc., de tal manera que es posible monitorear todo el proceso de principio a fin, y sistemas de notificaciones alertan al equipo acerca de errores, posibles inconvenientes y además muestra el desempeño del software a lo largo de cada ciclo de despliegue.
 
 Entrega continua permite decidir al equipo de negocios cuándo realizar los releases, y cambiar las condiciones por cada cliente. Es aconsejable para productos grandes con muchos módulos y un ciclo de releases de corto a mediano plazo.
 
 \subsection{Despliegue Continuo (Continuous Deployment)}
 
-Parte importante de la metodología de negocios Lean. Despliegue Continuo es otro patrón de despliegue que ha tomado fuerza últimamente con el auge de las empresas estilo StartUp; es similar al proceso de Entrega Continua pero con diferencias sustanciales:
+Parte importante de la metodología de negocios Lean [8]. Despliegue Continuo es otro patrón de despliegue que ha tomado fuerza últimamente con el auge de las empresas estilo StartUp; es similar al proceso de Entrega Continua pero con diferencias sustanciales:
 
 \begin{itemize}
  \item Todo el proceso debe ser automatizado, no existen tareas manuales.
@@ -588,7 +595,7 @@ Despliegue continuo es aconsejable para proyectos muy dinámicos, con despliegue
 
 \subsection{La Metodología de los Doce Factores (The Twelve-Factor App)}
 
-Es un framework de técnicas que profesionales con marcada experiencia en el desarrollo y despliegue de aplicaciones tipo PaaS han recolectado y publicado para ayudar a la comunidad a desarrollar aplicaciones portables, flexibles y robustas. Citando el texto de su página:
+Es un framework de técnicas que profesionales con marcada experiencia en el desarrollo y despliegue de aplicaciones tipo PaaS han recolectado y publicado para ayudar a la comunidad a desarrollar aplicaciones portables, flexibles y robustas. Citando el texto de su página [9]:
 
 \begin{quote}
  “En la era moderna el software es desplegado como servicio: llámese aplicación Web o Software-as-a-Service” (Software-como-servicio). Los doce-factores es una metodología para construir aplicaciones de software-como-servicio que:
@@ -625,7 +632,7 @@ Adicionalmente es deseable para el equipo conocer y aplicar las metodologías ba
 
 \subsection{Lean StartUp}
 
-Es un método para hacer negocios y crear productos diseñado por Eric Ries quien a su vez es el inventor del despliegue continuo (continuous deployement). Busca eliminar la prácticas inútiles e incrementar el valor creando nuevas prácticas durante el desarrollo del producto de tal manera que los negocios puedan tener mejores oportunidades de éxito sin requerir grandes montos de dinero externo, elaborados planes de negocio complejos, o el producto perfecto. Da especial importancia a la retroalimentación del cliente durante y luego del desarrollo del producto asegurando que el productor no invierta tiempo diseñando funcionalidades o servicios que los clientes no quieren.
+Es un método para hacer negocios y crear productos diseñado por Eric Ries quien a su vez es el inventor del despliegue continuo (continuous deployement) [10]. Busca eliminar la prácticas inútiles e incrementar el valor creando nuevas prácticas durante el desarrollo del producto de tal manera que los negocios puedan tener mejores oportunidades de éxito sin requerir grandes montos de dinero externo, elaborados planes de negocio complejos, o el producto perfecto. Da especial importancia a la retroalimentación del cliente durante y luego del desarrollo del producto asegurando que el productor no invierta tiempo diseñando funcionalidades o servicios que los clientes no quieren.
 
 Principios:
 
@@ -641,7 +648,7 @@ Principios:
 
 \subsection{Kanban}
 
-Inspirada por el sistema de producción de Toyota, Kanban es una metodología para gestionar el trabajo del conocimiento haciendo énfasis en la entrega justo a tiempo al mismo tiempo evitando sobrecargar al equipo. Fue creado como un enfoque incremental, de proceso evolutivo y un sistema de cambio para organizaciones.  Se cimienta en cuatro principios básicos:
+Inspirada por el sistema de producción de Toyota [11]. Kanban es una metodología para gestionar el trabajo del conocimiento haciendo énfasis en la entrega justo a tiempo al mismo tiempo evitando sobrecargar al equipo. Fue creado como un enfoque incremental, de proceso evolutivo y un sistema de cambio para organizaciones.  Se cimienta en cuatro principios básicos:
 
 \begin{itemize}
  \item {\bf Empezar con los procesos existentes} - La metodología Kanban no prescribe un conjunto específico de roles o pasos de un proceso. Empieza con los roles y procesos existentes  y estimula cambios continuos, incrementales y evolutivos en el sistema. La metodología Kanban es un método de gestión del cambio.
@@ -663,7 +670,7 @@ Existe mucha confusión en el medio acerca de lo que es DevOps, muchos piensan q
  \item Deshacerse del equipo de operaciones.
 \end{itemize}
 
-A manera de anécdota, incluimos unas cuantas frases tomadas del blog de Martin Spall acerca de cómo fallar al discernir cuándo o cómo se aplica DevOps.
+A manera de anécdota, incluimos unas cuantas frases tomadas del blog de Martin Brunton-Spall [12] acerca de cómo las organizaciones o los que las dirigen pueden fallar al discernir qué es y cuándo o cómo se aplica DevOps.
 
 “He renombrado a nuestro equipo de IT Ops como DevOps”.. Aunque los skills de un IT Ops son requeridos, son solo una parte del perfil.
 
@@ -795,14 +802,50 @@ Esperamos haber inspirado en el lector la curiosidad de averiguar más acerca de
 % (used to reserve space for the reference number labels box)
 \begin{thebibliography}{1}
 
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+\bibitem{IEEEhowto:loukides}
+M.~Loukides, \emph{What is DevOps?}, 1st~ed. \hskip 1em plus
+  0.5em minus 0.4em\relax 1005 Gravenstein Highway North: O'Reilly Media, 2012.
+
+\bibitem{IEEEhowto:agile}
+\url{http://en.wikipedia.org/wiki/Agile_software_development}
+
+\bibitem{IEEEhowto:buildingdevops}
+M.~Walls, \emph{Building a DevOps Culture}, 1st.~ed. \hskip 1em plus
+  0.5em minus 0.4em\relax 1005 Gravenstein Highway North: O'Reilly Media, 2013.
+
+\bibitem{IEEEhowto:whatisdevopsanyway}
+S.~Nelson-Smith, \emph{What Is This Devops Thing, Anyway?}, Web:
+\url{http://www.jedi.be/blog/2010/02/12/what-is-this-devops-thing-anyway/}
+
+\bibitem{IEEEhowto:phoenixproject}
+G.~Kim, K.~Behr and G.~Spafford, \emph{The Phoenix Project: A Novel About  IT, DevOps, and Helping Your Business Win}, 1st~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax Portland, Oregon: IT Revolution Press, 2013.
+
+\bibitem{IEEEhowto:booch}
+G.~Booch, \emph{Object Solutions: Managing the Object-Oriented Project}, 3th~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax Addison-Wesley Professional, 2007.
+
+\bibitem{IEEEhowto:Wikipedia}
+\url{http://en.wikipedia.org/wiki/Continuous_delivery}
+  
+\bibitem{IEEEhowto:ries}
+E.~Ries, \emph{Why Continuous Deployment?}, Web: \hskip 1em plus
+  0.5em minus 0.4em\relax Startup Lessons Learned.
+  \url{http://www.startuplessonslearned.com/2009/06/why-continuous-deployment.html}
+  
+\bibitem{IEEEhowto:12factor}
+\url{http://12factor.net/}
+
+\bibitem{IEEEhowto:lean}
+\url{http://theleanstartup.com/}
+
+\bibitem{IEEEhowto:kanban}
+\url{http://en.wikipedia.org/wiki/Kanban_(development)}
+
+\bibitem{IEEEhowto:brunton-spall}
+\url{http://www.brunton-spall.co.uk/post/2012/03/13/what-is-devops-not/}
 
 \end{thebibliography}
-
-
-
 
 % that's all folks
 \end{document}
